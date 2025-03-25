@@ -7,40 +7,38 @@ import { useState } from 'react';
 
 
 const AuthContainer = () => {
-  const [login, setLogin] = useState(true);
-  const [register, setRegister] = useState(false);
-  const [reset, setReset] = useState(false);
+  const [Auth, setAuth] = useState({
+    login: true,
+    register: false,
+    reset: false,
+  });
 
-  // useState Logic to handle views switches
+
+  // Refactoring Logic to handle views switches
+  // Login
+  const handleLogin = () => {
+    setAuth({ login: true, register: false, reset: false })
+  }
+
   // Register
   const handleRegister = () => {
-    setLogin(false);
-    setRegister(true);
-    setReset(false)  
+    setAuth({ login: false, register: true, reset: false }) 
   };
 
   // Reset
   const handleReset = () => {
-    setLogin(false);
-    setReset(true);
-    setRegister(false)
+    setAuth({ login: false, register: false, reset: true})
   }
 
-  // Login
-  const handleLogin = () => {
-    setLogin(true);
-    setRegister(false);
-    setReset(false);
-  }
 
   return (
     <section className='--flex-center --100vh'>
       <div className='container box'>
-        {login && <Login onRegister={handleRegister} onReset={handleReset} />}
+        { Auth.login && <Login onRegister={handleRegister} onReset={handleReset} />}
 
-        {register && <Register onLogin={handleLogin} />}
+        { Auth.register && <Register onLogin={handleLogin} />}
 
-        {reset && <Reset onLogin={handleLogin} />}
+        { Auth.reset && <Reset onLogin={handleLogin} />}
       </div>
     </section>
   )
