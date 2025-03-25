@@ -1,0 +1,148 @@
+
+
+:root {
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  --color-primary: #1e90ff;
+}
+
+.--text-sm {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.box {
+  width: 65rem;
+  height: auto;
+}
+
+.main-container{
+  width: 100%;
+  height: 35rem;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+
+.img-container{
+  width: 50%;
+  height: 100%;
+  padding: 4rem 1rem;
+  background-color: var(--color-primary);
+  animation: slide-down 0.5s ease;
+}
+
+.img-container img{
+  width: 100%;
+  height: 100%;
+}
+
+
+.form-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: slide-up 0.5s ease;
+  // background-color: white
+}
+
+
+// Animation logic 
+@keyframes slide-down{
+  0% {
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
+
+// Slide up   
+@keyframes slide-up{
+  0% {
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
+form{
+  width: 90%;
+  color: black;
+}
+
+form a {
+  text-decoration: none;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+h2, .--color-danger {
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: orangered;
+  text-align: center;
+}
+
+
+// .--color-danger {
+//   color: orangered;
+// }
+
+.--text-center {
+  text-align: center;
+}
+
+.--btn-primary {
+  color: #fff;
+  background: #007bff;
+
+  }
+
+.--btn-block {
+  width: 100%;
+}  
+
+.reset {
+  position: relative;
+}
+
+.close{
+  position: absolute;
+  top: 3rem;
+  left: 20rem;
+  height: 3rem;
+  width: 3rem;
+  border: 1px solid red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+
+@media screen and (max-width:500px) {
+  .img-container{
+    display: none;
+  }  
+  .form-container{
+    width: 100%;
+  }
+}
