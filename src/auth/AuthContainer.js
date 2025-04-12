@@ -5,7 +5,7 @@ import Register from './Register';
 import Reset from "./Reset"
 import { useState } from 'react';
 
-
+ 
 const AuthContainer = () => {
   const [Auth, setAuth] = useState({
     login: true,

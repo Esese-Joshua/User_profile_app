@@ -3,7 +3,7 @@
 :root {
   --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   --color-primary: #1e90ff;
-}
+} 
 
 .--text-sm {
   font-size: 0.8rem;
@@ -145,4 +145,64 @@ h2, .--color-danger {
   .form-container{
     width: 100%;
   }
+}
+
+// password
+.password {
+  position: relative;
+  width: 100%;
+}
+
+.password .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+} 
+
+.password input {
+  width: 100%;
+  padding-right: 40px;  /*make space for icon */
+}
+
+.hide-indicator {
+  margin-top: 1rem;
+  display: none;
+}
+
+.show-indicator {
+  display: block;
+  margin-top: 1rem;
+  animation: slide-up 0.5s ease;
+}
+.--bg-grey {
+  background: rgba(224, 202, 202, 0.272);
+}
+
+.--list-style-none {
+  list-style: none;
+}
+
+.--align-center {
+  display: flex;
+  align-items: center;
+}
+
+
+.black-dot {
+  height: 5px;
+  width: 5px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.pwd-green{
+  color: green;
+}
+
+.pwd-red{
+  color: red;
 }
