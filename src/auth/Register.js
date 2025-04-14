@@ -5,8 +5,9 @@ import {GoDot} from "react-icons/go";
 import { FaCheck } from 'react-icons/fa';
 
 
-const Register = ({ onLogin }) => {
-  const [showPassword, setShowPassword] = useState(false);
+const Register = ({ onLogin, onShowPassword, onTogglePassword }) => {
+
+
   const [showIndicator, setShowIndicator] = useState(false);
   const [pwd, setPwd] = useState("")
 
@@ -16,9 +17,7 @@ const Register = ({ onLogin }) => {
   const [pwdLength, setPwdLength] = useState(false)
   const [pwdComplete, setPwdComplete] = useState(false)
 
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword)
-  };
+
   const handleShowIndicator = () => {
     setShowIndicator(true)
   };
@@ -47,7 +46,7 @@ const Register = ({ onLogin }) => {
 
   // check for special character
   useEffect(() => {
-    if (pwd.match(/(?=.*[!@#$%^&*?_\-])/)
+    if (pwd.match(/(?=.*[!@#$%^&*?_-])/)
     ) {
       setPwdChar(true)
     }else{
@@ -64,7 +63,14 @@ const Register = ({ onLogin }) => {
     };
   }, [pwd]) 
 
-  
+  // check for complete password 
+  useEffect(() => {
+    if (pwdLetter && pwdChar && pwdLength && pwdNumber) {
+      setPwdComplete(true)
+    }else{
+      setPwdComplete(false)
+    };
+  }, [pwdLetter, pwdChar, pwdLength, pwdNumber]);  
   
 
   return (
@@ -83,17 +89,17 @@ const Register = ({ onLogin }) => {
 
             <div className='password'>
               <input 
-              type={showPassword ? "text" : "password"} className='--width-100' placeholder='Password'
+              type={onShowPassword ? "text" : "password"} className='--width-100' placeholder='Password'
               onFocus={handleShowIndicator}
               value={pwd} onChange={handlePasswordChange}
               />
 
-              <span className='icon' onClick={handleTogglePassword}>
-               {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye /> }
+              <span className='icon' onClick={onTogglePassword}>
+               {onShowPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye /> }
               </span>
             </div>
             
-            <button className='btn --btn-primary --btn-block'> Register </button> 
+            <button disabled={pwdComplete} className={pwdComplete ? "--btn --btn-primary --btn-block" : "btn --btn-primary --btn-block btn-disabled"}> Register </button> 
             
             <span className='--text-sm --block'>Have an accout? <a href='##' className='--text-sm' onClick={onLogin}>Login</a></span>
 

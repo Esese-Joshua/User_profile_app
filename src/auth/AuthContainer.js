@@ -13,8 +13,15 @@ const AuthContainer = () => {
     reset: false,
   });
 
+  // Uplifting the states
+  const [showPassword, setShowPassword] = useState(false);
 
-  // Refactoring Logic to handle views switches
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword)
+  };
+
+
+  // Refactoring Logics to handle views switches
   // Login
   const handleLogin = () => {
     setAuth({ login: true, register: false, reset: false })
@@ -34,9 +41,10 @@ const AuthContainer = () => {
   return (
     <section className='--flex-center --100vh'>
       <div className='container box'>
-        { Auth.login && <Login onRegister={handleRegister} onReset={handleReset} />}
+        
+        { Auth.login && <Login onRegister={handleRegister} onReset={handleReset} onShowPassword={showPassword} onTogglePassword={handleTogglePassword} />}
 
-        { Auth.register && <Register onLogin={handleLogin} />}
+        { Auth.register && <Register onLogin={handleLogin} onShowPassword={showPassword} onTogglePassword={handleTogglePassword}/>}
 
         { Auth.reset && <Reset onLogin={handleLogin} />}
       </div>
